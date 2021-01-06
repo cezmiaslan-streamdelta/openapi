@@ -28,27 +28,13 @@
     }
   ],
   "paths": {
-    "/MySMSAppName/requests": {
+    "/requests": {
       "post": {
         "tags": [
           "SMS"
         ],
         "summary": "Send SMS",
         "description": "Send SMS to an MSISDN number",
-        "parameters": [
-          {
-            "name": "MySMSAppName",
-            "in": "path",
-            "description": "The commercial app name defined in VF Single SMS Ap",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            },
-            "example": "mysmsapp"
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
