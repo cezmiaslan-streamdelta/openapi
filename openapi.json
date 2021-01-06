@@ -28,25 +28,27 @@
     }
   ],
   "paths": {
-    "/{MySMSAppName}/requests": {
+    "/MySMSAppName/requests": {
       "post": {
-        "security": [
-          {
-            "OAuth2": [
-              "send"
-            ]
-          }
-        ],
         "tags": [
           "SMS"
         ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/MySMSAppNamePathParam"
-          }
-        ],
         "summary": "Send SMS",
         "description": "Send SMS to an MSISDN number",
+        "parameters": [
+          {
+            "name": "MySMSAppName",
+            "in": "path",
+            "description": "The commercial app name defined in VF Single SMS Ap",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "mysmsapp"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -68,54 +70,46 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "send"
+            ]
+          }
+        ]
       }
     }
   },
   "components": {
-    "securitySchemes": {
-      "OAuth2": {
-        "type": "oauth2",
-        "description": "This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)",
-        "flows": {
-          "implicit": {
-            "authorizationUrl": "https://api.example.com/oauth2/authorize",
-            "scopes": {
-              "send": "send sms"
-            }
-          }
-        }
-      }
-    },
     "schemas": {
       "smsBody": {
         "type": "object",
-        "description": "body of SMS by MSISDN",
-        "nullable": false,
         "properties": {
           "outBoundSMSMessageRequest": {
             "$ref": "#/components/schemas/outBoundSMSMessageRequest"
           }
-        }
+        },
+        "description": "body of SMS by MSISDN",
+        "nullable": false
       },
       "outBoundSMSMessageRequest": {
-        "description": "SMS by MSISDN",
         "type": "object",
         "properties": {
           "senderAddress": {
-            "type": "string",
-            "description": "Commercial app Name defined in VF single SMS app",
             "maxLength": 12,
             "minLength": 1,
-            "example": "test1_2",
-            "nullable": false
+            "type": "string",
+            "description": "Commercial app Name defined in VF single SMS app",
+            "nullable": false,
+            "example": "test1_2"
           },
           "clientCorrelator": {
             "maxLength": 50,
             "minLength": 20,
             "type": "string",
-            "example": "xyzt-abcd",
-            "nullable": true
+            "nullable": true,
+            "example": "xyzt-abcd"
           },
           "outboundSMSTextMessage": {
             "$ref": "#/components/schemas/outboundSMSTextMessage"
@@ -123,31 +117,31 @@
           "address": {
             "$ref": "#/components/schemas/address"
           }
-        }
+        },
+        "description": "SMS by MSISDN"
       },
       "outboundSMSTextMessage": {
-        "description": "Sms text message",
         "type": "object",
         "properties": {
           "message": {
-            "type": "string",
             "maxLength": 700,
             "minLength": 1,
+            "type": "string",
             "nullable": false,
             "example": "SMS test message"
           }
-        }
+        },
+        "description": "Sms text message"
       },
       "address": {
-        "type": "array",
         "minItems": 1,
+        "type": "array",
         "items": {
           "type": "string",
           "example": "tel:+49152004XXXXX"
         }
       },
       "outBoundSMSMessageForResponse": {
-        "description": "SMS Request body in Response",
         "type": "object",
         "properties": {
           "address": {
@@ -157,8 +151,8 @@
             "maxLength": 50,
             "minLength": 20,
             "type": "string",
-            "example": "xyzt-abcd",
-            "nullable": true
+            "nullable": true,
+            "example": "xyzt-abcd"
           },
           "deliveryInfoList": {
             "$ref": "#/components/schemas/deliveryInfoList"
@@ -178,10 +172,10 @@
             "type": "string",
             "example": "MySMSAppName"
           }
-        }
+        },
+        "description": "SMS Request body in Response"
       },
       "deliveryInfoList": {
-        "description": "delivery Info of Response",
         "type": "object",
         "properties": {
           "deliveryInfo": {
@@ -194,7 +188,8 @@
             "type": "string",
             "description": "url of sms to check status"
           }
-        }
+        },
+        "description": "delivery Info of Response"
       },
       "deliveryInfo": {
         "type": "object",
@@ -217,25 +212,41 @@
         }
       },
       "smsResponseBody": {
-        "description": "SMS Response body",
         "type": "object",
         "properties": {
           "outBoundSMSMessageRequest": {
             "$ref": "#/components/schemas/outBoundSMSMessageForResponse"
           }
-        }
+        },
+        "description": "SMS Response body"
       }
     },
     "parameters": {
       "MySMSAppNamePathParam": {
         "name": "MySMSAppName",
         "in": "path",
+        "description": "The commercial app name defined in VF Single SMS Ap",
         "required": true,
+        "style": "simple",
+        "explode": false,
         "schema": {
           "type": "string"
         },
-        "description": "The commercial app name defined in VF Single SMS Ap",
-        "explode": false
+        "example": "mysmsapp"
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "description": "This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://api.example.com/oauth2/authorize",
+            "scopes": {
+              "send": "send sms"
+            }
+          }
+        }
       }
     }
   }
