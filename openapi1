@@ -1,0 +1,124 @@
+{
+  "id": "abee3c5c-82bd-4913-a1ed-029d2698a440",
+  "priority": 0,
+  "httpRequest": {
+    "operationId": "POST /{MySMSAppName}/requests",
+    "specUrlOrPayload": "https://raw.githubusercontent.com/cezmiaslan-streamdelta/openapi/main/openapi.json",
+    "requestMatchers": [
+      {
+        "method": "POST",
+        "path": "/{MySMSAppName}/requests",
+        "pathParameters": {
+          "keyMatchStyle": "MATCHING_KEY",
+          "MySMSAppName": {
+            "parameterStyle": "SIMPLE",
+            "values": [
+              {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ]
+          }
+        },
+        "headers": {
+          "authorization": [
+            ".+"
+          ],
+          "content-type": [
+            "application/json.*"
+          ]
+        },
+        "body": {
+          "type": "JSON_SCHEMA",
+          "jsonSchema": {
+            "type": "object",
+            "properties": {
+              "outBoundSMSMessageRequest": {
+                "type": "object",
+                "properties": {
+                  "senderAddress": {
+                    "maxLength": 12,
+                    "minLength": 1,
+                    "type": "string",
+                    "description": "Commercial app Name defined in VF single SMS app",
+                    "nullable": false,
+                    "example": "test1_2"
+                  },
+                  "clientCorrelator": {
+                    "maxLength": 50,
+                    "minLength": 20,
+                    "type": "string",
+                    "nullable": true,
+                    "example": "xyzt-abcd"
+                  },
+                  "outboundSMSTextMessage": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "maxLength": 700,
+                        "minLength": 1,
+                        "type": "string",
+                        "nullable": false,
+                        "example": "SMS test message"
+                      }
+                    },
+                    "description": "Sms text message"
+                  },
+                  "address": {
+                    "minItems": 1,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "example": "tel:+49152004XXXXX"
+                    }
+                  }
+                },
+                "description": "SMS by MSISDN"
+              }
+            },
+            "description": "body of SMS by MSISDN",
+            "nullable": false
+          }
+        }
+      }
+    ]
+  },
+  "httpResponse": {
+    "statusCode": 201,
+    "headers": {
+      "content-type": [
+        "application/json"
+      ]
+    },
+    "body": {
+      "outBoundSMSMessageRequest": {
+        "address": [
+          "tel:+49152004XXXXX"
+        ],
+        "clientCorrelator": "xyzt-abcd",
+        "deliveryInfoList": {
+          "deliveryInfo": [
+            {
+              "address": "tel:+49152004XXXXX",
+              "deliveryStatus": "DeliveredToNetwork"
+            }
+          ],
+          "resourceURL": "some_string_value"
+        },
+        "outboundSMSTextMessage": {
+          "message": "SMS test message"
+        },
+        "resourceURL": "some_string_value",
+        "senderName": "vodafone",
+        "senderAddress": "MySMSAppName"
+      }
+    }
+  },
+  "times": {
+    "unlimited": true
+  },
+  "timeToLive": {
+    "unlimited": true
+  }
+}
