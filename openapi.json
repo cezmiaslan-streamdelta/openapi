@@ -1,0 +1,242 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Vodafone Single SMS API",
+    "description": "Specification for OpenAPI VFAL Single S",
+    "contact": {
+      "name": "Cezmi Aslan",
+      "url": "http://pia-team.com",
+      "email": "cezmi.aslan@pia-team.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.developer.vodafone.com/v1/singlesms/smsmessaging/outbound",
+      "description": "Development Server"
+    }
+  ],
+  "security": [
+    {
+      "OAuth2": [
+        "send"
+      ]
+    }
+  ],
+  "paths": {
+    "/{MySMSAppName}/requests": {
+      "post": {
+        "security": [
+          {
+            "OAuth2": [
+              "send"
+            ]
+          }
+        ],
+        "tags": [
+          "SMS"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/MySMSAppNamePathParam"
+          }
+        ],
+        "summary": "Send SMS",
+        "description": "Send SMS to an MSISDN number",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/smsBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "SMS Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/smsResponseBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "description": "This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://api.example.com/oauth2/authorize",
+            "scopes": {
+              "send": "send sms"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "smsBody": {
+        "type": "object",
+        "description": "body of SMS by MSISDN",
+        "nullable": false,
+        "properties": {
+          "outBoundSMSMessageRequest": {
+            "$ref": "#/components/schemas/outBoundSMSMessageRequest"
+          }
+        }
+      },
+      "outBoundSMSMessageRequest": {
+        "description": "SMS by MSISDN",
+        "type": "object",
+        "properties": {
+          "senderAddress": {
+            "type": "string",
+            "description": "Commercial app Name defined in VF single SMS app",
+            "maxLength": 12,
+            "minLength": 1,
+            "example": "test1_2",
+            "nullable": false
+          },
+          "clientCorrelator": {
+            "maxLength": 50,
+            "minLength": 20,
+            "type": "string",
+            "example": "xyzt-abcd",
+            "nullable": true
+          },
+          "outboundSMSTextMessage": {
+            "$ref": "#/components/schemas/outboundSMSTextMessage"
+          },
+          "address": {
+            "$ref": "#/components/schemas/address"
+          }
+        }
+      },
+      "outboundSMSTextMessage": {
+        "description": "Sms text message",
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "maxLength": 700,
+            "minLength": 1,
+            "nullable": false,
+            "example": "SMS test message"
+          }
+        }
+      },
+      "address": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string",
+          "example": "tel:+49152004XXXXX"
+        }
+      },
+      "outBoundSMSMessageForResponse": {
+        "description": "SMS Request body in Response",
+        "type": "object",
+        "properties": {
+          "address": {
+            "$ref": "#/components/schemas/address"
+          },
+          "clientCorrelator": {
+            "maxLength": 50,
+            "minLength": 20,
+            "type": "string",
+            "example": "xyzt-abcd",
+            "nullable": true
+          },
+          "deliveryInfoList": {
+            "$ref": "#/components/schemas/deliveryInfoList"
+          },
+          "outboundSMSTextMessage": {
+            "$ref": "#/components/schemas/outboundSMSTextMessage"
+          },
+          "resourceURL": {
+            "type": "string",
+            "description": "url of sms to check status"
+          },
+          "senderName": {
+            "type": "string",
+            "example": "vodafone"
+          },
+          "senderAddress": {
+            "type": "string",
+            "example": "MySMSAppName"
+          }
+        }
+      },
+      "deliveryInfoList": {
+        "description": "delivery Info of Response",
+        "type": "object",
+        "properties": {
+          "deliveryInfo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/deliveryInfo"
+            }
+          },
+          "resourceURL": {
+            "type": "string",
+            "description": "url of sms to check status"
+          }
+        }
+      },
+      "deliveryInfo": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string",
+            "example": "tel:+49152004XXXXX"
+          },
+          "deliveryStatus": {
+            "type": "string",
+            "enum": [
+              "DeliveredToNetwork",
+              "DeliveryUncertain",
+              "DeliveryImpossible",
+              "MessageWaiting",
+              "DeliveredToTerminal",
+              "DeliveryNotificationNotSupported"
+            ]
+          }
+        }
+      },
+      "smsResponseBody": {
+        "description": "SMS Response body",
+        "type": "object",
+        "properties": {
+          "outBoundSMSMessageRequest": {
+            "$ref": "#/components/schemas/outBoundSMSMessageForResponse"
+          }
+        }
+      }
+    },
+    "parameters": {
+      "MySMSAppNamePathParam": {
+        "name": "MySMSAppName",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "The commercial app name defined in VF Single SMS Ap",
+        "explode": false
+      }
+    }
+  }
+}
