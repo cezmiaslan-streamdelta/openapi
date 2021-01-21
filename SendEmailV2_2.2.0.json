@@ -1,0 +1,594 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Send Email",
+    "description": "This API enables consumer applications to send emails to customers. Standard emails may be sent to up to 10 recipients. The serviceIds (from field) in AWS has to be whitelisted explicitly in SES",
+    "contact": {
+      "name": "Developer Portal Administrator",
+      "email": "apix@vodafone.com"
+    },
+    "version": "2.1.0"
+  },
+  "host": "apistagingref.developer.vodafone.com",
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/v2/send-email",
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "apix_oauth": {
+      "type": "oauth2",
+      "tokenUrl": "https://apistagingref.developer.vodafone.com/oauth2/token",
+      "flow": "application",
+      "scopes": {
+        "SENDEMAIL_ALL": "Allows developer to access standard api operations."
+      }
+    }
+  },
+  "paths": {
+    "/standard": {
+      "post": {
+        "operationId": "standardEmail",
+        "summary": "Sends an email, enabling communication with customers.",
+        "description": "This resource sends an email, enabling communication with customers.\n- The length of the payload MUST NOT exceed 2097152 bytes.\n- Request parameters must be URL encoded.\n\nThe value for the field 'from' is extracted from the API configuration or the payload, though API configuration gets priority. The value is set by the API consumer when registering for the Send Email API on the Vodafone Developer Portal.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "OAuth token created using APIX-OAuth client credentials flow.",
+            "required": true,
+            "type": "string",
+            "x-example": "Bearer ABruqE3pH6s2PXnxOhg0alnppz5c"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "either \"application/json\" or a media type denoting \"application/json\".",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "opco",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "description": "Set this value if oppco specific email_from address is to be used in email body",
+            "x-example": "es"
+          },
+          {
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "description": "A unique transaction ID. If provided, the same value is returned, otherwise a new transaction id is generated.",
+            "required": false,
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "representing any media type or a sub-type that is compatible with the media type application/json (analogous to the Accept headers).",
+            "required": true,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "standardEmailObj",
+            "in": "body",
+            "required": true,
+            "description": "This is a standard email object reuired to be sent with the email.",
+            "schema": {
+              "$ref": "#/definitions/standardObj"
+            },
+            "x-example": {
+              "to": [
+                "akhilesh.tripathi@vodafone.com"
+              ],
+              "cc": [
+                "preeti.singh14@vodafone.com"
+              ],
+              "bcc": [
+                "kunal.rajeshrathi@vodafone.com"
+              ],
+              "subject": "Congratulations!",
+              "headers": "SENDEMAIL_STANDARD",
+              "contentType": "text/plain",
+              "content": "Hello, this is an automated mail",
+              "flags": "!"
+            }
+          }
+        ],
+        "tags": [
+          "SEND EMAIL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string"
+                },
+                "emailMsgId": {
+                  "type": "string"
+                }
+              }
+            },
+            "headers": {
+              "Content-Type": {
+                "description": "always \"application/json\"",
+                "type": "string"
+              },
+              "vf-trace-transaction-id": {
+                "description": "A unique transaction ID. If provided, the same value is returned, otherwise a new transaction id is generated.",
+                "type": "string"
+              }
+            },
+            "examples": {
+              "application/json": {
+                "result": "Success",
+                "emailMsgId": "%3C820317273.46811519368702012.JavaMail.b2b%40now-ena-bac2.prd.de1.sp.vodafone.com%3E"
+              }
+            }
+          },
+          "401": {
+            "description": "URI does not represent a recognised resource ",
+            "schema": {
+              "$ref": "#/definitions/GenericError"
+            }
+          },
+          "404": {
+            "description": "URI does not represent a recognised resource ",
+            "schema": {
+              "$ref": "#/definitions/HTTP_404_Error"
+            }
+          },
+          "405": {
+            "description": "the request method is not supported by this  resource",
+            "schema": {
+              "$ref": "#/definitions/HTTP_405_Error"
+            }
+          },
+          "406": {
+            "description": "The Accept header is invalid ",
+            "schema": {
+              "$ref": "#/definitions/HTTP_406_Error"
+            }
+          },
+          "413": {
+            "description": "The  request payload exceeds a maximum size ",
+            "schema": {
+              "$ref": "#/definitions/HTTP_413_Error"
+            }
+          },
+          "414": {
+            "description": "Request-URI is too long ",
+            "schema": {
+              "$ref": "#/definitions/HTTP_414_Error"
+            }
+          },
+          "415": {
+            "description": "The value of the Content-Type header is invalid ",
+            "schema": {
+              "$ref": "#/definitions/HTTP_415_Error"
+            }
+          },
+          "429": {
+            "description": "Api Quota limit reached ",
+            "schema": {
+              "$ref": "#/definitions/HTTP_429_Error"
+            }
+          },
+          "500": {
+            "description": "The authorization server encountered an unexpected condition that prevented it fromfulfilling the request",
+            "schema": {
+              "$ref": "#/definitions/GenericError"
+            }
+          },
+          "502": {
+            "description": "Error connecting to an upstream server",
+            "schema": {
+              "$ref": "#/definitions/HTTP_502_Error"
+            }
+          },
+          "503": {
+            "description": "An upstream server is unavailable",
+            "schema": {
+              "$ref": "#/definitions/HTTP_503_Error"
+            }
+          },
+          "504": {
+            "description": "A timeout occurred connecting to an upstream server",
+            "schema": {
+              "$ref": "#/definitions/HTTP_504_Error"
+            }
+          },
+          "default": {
+            "description": "APIX common error as described in https://confluence.sp.vodafone.com/tempcps/display/AF/Common+Error+Codes"
+          }
+        },
+        "security": [
+          {
+            "apix_oauth": [
+              "SENDEMAIL_ALL"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "HTTP_415_Error": {
+      "type": "object",
+      "required": [
+        "description",
+        "error",
+        "message",
+        "transactionId"
+      ],
+      "properties": {
+        "error": {
+          "type": "string",
+          "example": "Unsupported Media Type"
+        },
+        "message": {
+          "type": "string",
+          "example": "Unsupported Media Type"
+        },
+        "description": {
+          "type": "string",
+          "example": "The value of the Content-Type header is invalid"
+        },
+        "transactionId": {
+          "type": "string",
+          "example": "2f21-1fwef2-af2313-23feda"
+        }
+      }
+    },
+    "HTTP_405_Error": {
+      "type": "object",
+      "required": [
+        "description",
+        "error",
+        "message",
+        "transactionId"
+      ],
+      "properties": {
+        "error": {
+          "type": "string",
+          "example": "Method Not Allowed"
+        },
+        "message": {
+          "type": "string",
+          "example": "Method Not Allowed"
+        },
+        "description": {
+          "type": "string",
+          "example": "the request method is not supported by this  resource"
+        },
+        "transactionId": {
+          "type": "string",
+          "example": "2f21-1fwef2-af2313-23feda"
+        }
+      }
+    },
+    "HTTP_406_Error": {
+      "type": "object",
+      "required": [
+        "description",
+        "error",
+        "message",
+        "transactionId"
+      ],
+      "properties": {
+        "error": {
+          "type": "string",
+          "example": "Not Acceptable"
+        },
+        "message": {
+          "type": "string",
+          "example": "Not Acceptable"
+        },
+        "description": {
+          "type": "string",
+          "example": "The Accept header is invalid"
+        },
+        "transactionId": {
+          "type": "string",
+          "example": "2f21-1fwef2-af2313-23feda"
+        }
+      }
+    },
+    "HTTP_404_Error": {
+      "type": "object",
+      "required": [
+        "description",
+        "error",
+        "message",
+        "transactionId"
+      ],
+      "properties": {
+        "error": {
+          "type": "string",
+          "example": "Resource Not Found"
+        },
+        "message": {
+          "type": "string",
+          "example": "Resource Not Found"
+        },
+        "description": {
+          "type": "string",
+          "example": "URI does not represent a recognised resource"
+        },
+        "transactionId": {
+          "type": "string",
+          "example": "2f21-1fwef2-af2313-23feda"
+        }
+      }
+    },
+    "HTTP_429_Error": {
+      "type": "object",
+      "required": [
+        "description",
+        "error",
+        "message",
+        "transactionId"
+      ],
+      "properties": {
+        "error": {
+          "type": "string",
+          "example": "Too Many Requests"
+        },
+        "message": {
+          "type": "string",
+          "example": "Too Many Requests"
+        },
+        "description": {
+          "type": "string",
+          "example": "Api Quota limit reached"
+        },
+        "transactionId": {
+          "type": "string",
+          "example": "2f21-1fwef2-af2313-23feda"
+        }
+      }
+    },
+    "HTTP_414_Error": {
+      "type": "object",
+      "required": [
+        "description",
+        "error",
+        "message",
+        "transactionId"
+      ],
+      "properties": {
+        "error": {
+          "type": "string",
+          "example": "Request URI Too Long"
+        },
+        "message": {
+          "type": "string",
+          "example": "Request URI Too Long"
+        },
+        "description": {
+          "type": "string",
+          "example": "Request-URI is too long"
+        },
+        "transactionId": {
+          "type": "string",
+          "example": "2f21-1fwef2-af2313-23feda"
+        }
+      }
+    },
+    "HTTP_413_Error": {
+      "type": "object",
+      "required": [
+        "description",
+        "error",
+        "message",
+        "transactionId"
+      ],
+      "properties": {
+        "error": {
+          "type": "string",
+          "example": "Payload Too Large"
+        },
+        "message": {
+          "type": "string",
+          "example": "Payload Too Large"
+        },
+        "description": {
+          "type": "string",
+          "example": "The  request payload exceeds a maximum size"
+        },
+        "transactionId": {
+          "type": "string",
+          "example": "2f21-1fwef2-af2313-23feda"
+        }
+      }
+    },
+    "GenericError": {
+      "type": "object",
+      "required": [
+        "description",
+        "error",
+        "message",
+        "transactionId"
+      ],
+      "properties": {
+        "error": {
+          "type": "string",
+          "example": "server_error"
+        },
+        "message": {
+          "type": "string",
+          "example": "server_error"
+        },
+        "description": {
+          "type": "string",
+          "example": "The authorization server encountered an unexpected condition that prevented it from fulfilling the request"
+        },
+        "transactionId": {
+          "type": "string",
+          "example": "2f21-1fwef2-af2313-23feda"
+        }
+      }
+    },
+    "HTTP_502_Error": {
+      "type": "object",
+      "required": [
+        "description",
+        "errorCode",
+        "error",
+        "message",
+        "transactionId"
+      ],
+      "properties": {
+        "errorCode": {
+          "type": "string",
+          "example": "E340"
+        },
+        "error": {
+          "type": "string",
+          "example": "server_error"
+        },
+        "message": {
+          "type": "string",
+          "example": "server_error"
+        },
+        "description": {
+          "type": "string",
+          "example": "Error connecting to an upstream server"
+        },
+        "transactionId": {
+          "type": "string",
+          "example": "2f21-1fwef2-af2313-23feda"
+        }
+      }
+    },
+    "HTTP_503_Error": {
+      "type": "object",
+      "required": [
+        "description",
+        "errorCode",
+        "error",
+        "message",
+        "transactionId"
+      ],
+      "properties": {
+        "errorCode": {
+          "type": "string",
+          "example": "E340"
+        },
+        "error": {
+          "type": "string",
+          "example": "server_error"
+        },
+        "message": {
+          "type": "string",
+          "example": "server_error"
+        },
+        "description": {
+          "type": "string",
+          "example": "An upstream server is unavailable"
+        },
+        "transactionId": {
+          "type": "string",
+          "example": "2f21-1fwef2-af2313-23feda"
+        }
+      }
+    },
+    "HTTP_504_Error": {
+      "type": "object",
+      "required": [
+        "description",
+        "errorCode",
+        "error",
+        "message",
+        "transactionId"
+      ],
+      "properties": {
+        "errorCode": {
+          "type": "string",
+          "example": "E340"
+        },
+        "error": {
+          "type": "string",
+          "example": "server_error"
+        },
+        "message": {
+          "type": "string",
+          "example": "server_error"
+        },
+        "description": {
+          "type": "string",
+          "example": "a timeout occurred connecting to an upstream server"
+        },
+        "transactionId": {
+          "type": "string",
+          "example": "2f21-1fwef2-af2313-23feda"
+        }
+      }
+    },
+    "standardObj": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string",
+          "description": "sender address, for aws this should be whitelisted in AWS, else mails will not get triggered",
+          "example": "sender@vodafone.com"
+        },
+        "to": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "akhilesh.tripathi@vodafone.com"
+          }
+        },
+        "cc": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "preeti.singh14@vodafone.com"
+          }
+        },
+        "bcc": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "kunal.rajeshrathi@vodafone.com"
+          }
+        },
+        "subject": {
+          "type": "string",
+          "example": "Congratulations!"
+        },
+        "headers": {
+          "type": "string",
+          "example": "SENDEMAIL_STANDARD"
+        },
+        "contentType": {
+          "type": "string",
+          "example": "text/html; charset=utf-8"
+        },
+        "content": {
+          "type": "string",
+          "example": "%3Chtml%3E%0D%0A++%3Chead%3E%0D%0A++%3C%2Fhead%3E%0D%0A++%0D%0A%3Cbody+style%3D%22margin%3A0%3B%22%3E%0D%0A%0D%0A%3C%21--Headder+banner%2C+logo+and+Vodafone--%3E%0D%0A%3Ctable+width%3D%22100%25%22+border%3D%220%22+cellspacing%3D%220%22%3E%0D%0A++%3Ctr%3E%0D%0A++++%3C%21--logo--%3E%0D%0A++++%3Ctd+width%3D%2248%22+height%3D%2248%22%3E%3Cimg+style%3D%22float%3Aleft%3Bwidth%3A48px%3Bheight%3A48px%3B%22+src%3D%22cid%3A30b70e413429929e992d21ecbb6fec37e0ec473f%40zimbra%22+%2F%3E%3C%2Ftd%3E%0D%0A++%3C%2Ftr%3E%0D%0A++%3Ctr%3E%0D%0A++++%3Ctd+style%3D%22height%3A+20px%3B%22%3E%3C%2Ftd%3E%0D%0A++%3C%2Ftr%3E%0D%0A%3C%2Ftable%3E%0D%0A%0D%0A%3C%21--Email+body--%3E%0D%0A%3Ctable+width%3D%22100%25%22+border%3D%220%22+bgcolor%3D%22%23FFFFFF%22+cellspacing%3D%220%22+style%3D%22color%3A+%23333333%3B%22%3E%0D%0A%3C%21--Greeting--%3E%0D%0A++%3Ctr%3E%0D%0A++++%3Ctd+width%3D%22595%22+style%3D%22font-family%3AHelvetica%2CArial%2Csans-serif%3B+font-size%3A+10pt%3B+padding-top%3A15px%3B+padding-left%3A20px%3B%22%3EHello%2C%3C%2Ftd%3E%0D%0A++%3C%2Ftr%3E%0D%0A%3C%21--Reset+link--%3E%0D%0A++%3Ctr%3E%0D%0A++++%3Ctd+width%3D%22595%22+style%3D%22font-family%3AHelvetica%2CArial%2Csans-serif%3B+font-size%3A+10pt%3B+padding-top%3A10px%3B+padding-left%3A20px%3B%22%3E%0D%0A%09%09%09%09Great+news%2C+your+V-Pet+subscription+is+now+active+-+so+you%27re+all+set+to+get+connected.%0D%0A%09%09%09%09%3C%2Ftd%3E%0D%0A%3C%2Ftr%3E%0D%0A%3Ctr%3E%0D%0A++++%3Ctd+style%3D%22height%3A+40px%3B%22%3E%3C%2Ftd%3E%0D%0A%3C%2Ftr%3E%0D%0A%3Ctr%3E%0D%0A++%3Ctd+width%3D%22595%22+style%3D%22font-family%3AHelvetica%2CArial%2Csans-serif%3B+font-size%3A+10pt%3B+padding-top%3A10px%3B+padding-left%3A20px%3B%22%3E%0D%0A+++++It+costs+just+%EF%BF%BD%24numberWithLocale.format%28%220.00%22%2C+%24math.roundTo%282%2C+%24param.Amount%29%29+a+month+and+will+renew+automatically+every+30+days.+Remember%2C+you+can+manage+your+V-Pet+subscription++in+your+V+by+Vodafone+App+anytime.%0D%0A++%3C%2Ftd%3E%0D%0A%3C%2Ftr%3E%0D%0A%0D%0A%3C%21--Thank+you--%3E%0D%0A%3Cbr%2F%3E%0D%0A++%3Ctr%3E%0D%0A++++%3Ctd+width%3D%22595%22+style%3D%22font-family%3AHelvetica%2CArial%2Csans-serif%3B+font-size%3A+10pt%3B+padding-top%3A10px%3B+padding-left%3A20px%3B%22%3EThank+you%3C%2Ftd%3E%0D%0A++%3C%2Ftr%3E%0D%0A%3C%21--Vodafone+copyright--%3E%0D%0A++%3Ctr%3E%0D%0A++++%3Ctd+style%3D%22height%3A+40px%3B%22%3E%3C%2Ftd%3E%0D%0A++%3C%2Ftr%3E%0D%0A++%3Ctr%3E%0D%0A++++%3Ctd+width%3D%22595%22+style%3D%22background-color%3A+%23282828%3B+color%3A+%23b3b3b3%3B+font-family%3AHelvetica%2CArial%2Csans-serif%3B+font-size%3A+10pt%3B+padding-top%3A20px%3B+padding-bottom%3A+20px%3B+padding-left%3A20px%3B%22%3EThe+Customer+Care+Team%3C%2Ftd%3E%0D%0A++%3C%2Ftr%3E%0D%0A%3C%2Ftable%3E%0D%0A%0D%0A%3C%2Fbody%3E%0D%0A%3C%2Fhtml%3E"
+        },
+        "flags": {
+          "type": "string",
+          "example": "!"
+        }
+      },
+      "required": [
+        "to",
+        "subject",
+        "headers",
+        "content"
+      ]
+    }
+  }
+}
