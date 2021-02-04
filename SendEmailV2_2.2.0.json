@@ -9,7 +9,7 @@
     },
     "version": "2.1.0"
   },
-  "host": "apistagingref.developer.vodafone.com",
+  "host": "cezmi",
   "schemes": [
     "https"
   ],
@@ -20,7 +20,7 @@
   "securityDefinitions": {
     "apix_oauth": {
       "type": "oauth2",
-      "tokenUrl": "https://apistagingref.developer.vodafone.com/oauth2/token",
+      "tokenUrl": "https://cezmi/oauth2/token",
       "flow": "application",
       "scopes": {
         "SENDEMAIL_ALL": "Allows developer to access standard api operations."
