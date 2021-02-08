@@ -65,18 +65,22 @@
         },
         "cid2": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID 2 associated with the CPE object"
         },
         "cid3": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID 3 associated with the CPE object"
         },
         "cid4": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID 4 associated with the CPE object"
         },
         "extServiceid": {
           "type": "string",
+          "x-nullable": true,
           "description": "External service ID, provided by the OSS"
         }
       },
@@ -90,35 +94,42 @@
       "properties": {
         "config_file_provider": {
           "type": "string",
+          "x-nullable": true,
           "description": "Default handler for creation the config file for CableModem. It can be also static file "
         },
         "include_classes": {
           "type": "object",
+          "x-nullable": true,
           "description": "Multiple client classes for Cable Modem",
           "additionalProperties": {}
         },
         "include_cpe_classes": {
           "type": "object",
+          "x-nullable": true,
           "description": "Multiple client classes for CPE",
           "additionalProperties": {}
         },
         "include_edva_classes": {
           "type": "object",
+          "x-nullable": true,
           "description": "Multiple client classes for MTA",
           "additionalProperties": {}
         },
         "custom_properties": {
           "type": "object",
+          "x-nullable": true,
           "description": "Set of parameters which used for customer product configuration ",
           "additionalProperties": {}
         },
         "options": {
           "type": "object",
+          "x-nullable": true,
           "description": "DHCPv4 Options",
           "additionalProperties": {}
         },
         "options6": {
           "type": "object",
+          "x-nullable": true,
           "description": "DHCPv6 Options",
           "additionalProperties": {}
         }
@@ -148,21 +159,26 @@
         },
         "cid": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID associated with the CPE object"
         },
         "cid2": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID 2 associated with the CPE object"
         },
         "cid3": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID 3 associated with the CPE object"
         },
         "cid4": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID 4 associated with the CPE object"
         },
         "extServiceid": {
+          "x-nullable": true,
           "type": "string",
           "description": "External service ID, provided by the OSS"
         }
@@ -331,22 +347,27 @@
         },
         "cid": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID associated with the CPE object"
         },
         "cid2": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID 2 associated with the CPE object"
         },
         "cid3": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID 3 associated with the CPE object"
         },
         "cid4": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID 4 associated with the CPE object"
         },
         "extServiceid": {
           "type": "string",
+          "x-nullable": true,
           "description": "External service ID, provided by the OSS"
         }
       },
@@ -360,25 +381,30 @@
       "properties": {
         "config_file_provider": {
           "type": "string",
+          "x-nullable": true,
           "description": "Config file for geneartion"
         },
         "include_classes": {
           "type": "object",
+          "x-nullable": true,
           "description": "Include classes",
           "additionalProperties": {}
         },
         "custom_properties": {
           "type": "object",
+          "x-nullable": true,
           "description": "Custom properties",
           "additionalProperties": {}
         },
         "options": {
           "type": "object",
+          "x-nullable": true,
           "description": "DHCP v4 Options",
           "additionalProperties": {}
         },
         "options6": {
           "type": "object",
+          "x-nullable": true,
           "description": "DHCP v6 Options",
           "additionalProperties": {}
         }
@@ -1659,22 +1685,27 @@
         },
         "cid": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID associated with the CPE object"
         },
         "cid2": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID 2 associated with the CPE object"
         },
         "cid3": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID 3 associated with the CPE object"
         },
         "cid4": {
           "type": "string",
+          "x-nullable": true,
           "description": "Customer ID 4 associated with the CPE object"
         },
         "extServiceid": {
           "type": "string",
+          "x-nullable": true,
           "description": "External service ID, provided by the OSS"
         }
       },
@@ -1740,6 +1771,265 @@
   },
   "paths": {
     "/services/api/v1/NBI/DOCSISModem": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "integer"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/DOCSISModemGettingClass"
+                  }
+                },
+                "count": {
+                  "type": "integer"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "message",
+                "code",
+                "data",
+                "count"
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "integer"
+                },
+                "errors": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "message",
+                "code"
+              ]
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "integer"
+                },
+                "errors": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "message",
+                "code"
+              ]
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "integer"
+                },
+                "errors": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "message",
+                "code"
+              ]
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "integer"
+                },
+                "errors": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "message",
+                "code"
+              ]
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "integer"
+                },
+                "errors": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "message",
+                "code"
+              ]
+            }
+          }
+        },
+        "description": "This method is used for trigger actions on Service",
+        "tags": [
+          "DOCSISModem"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "cpeid",
+            "required": false,
+            "type": "string",
+            "description": "CPE ID"
+          },
+          {
+            "in": "query",
+            "name": "cid",
+            "required": false,
+            "type": "string",
+            "description": "Customer ID associated with the CPE object"
+          },
+          {
+            "in": "query",
+            "name": "cid2",
+            "required": false,
+            "type": "string",
+            "description": "Customer ID 2 associated with the CPE object"
+          },
+          {
+            "in": "query",
+            "name": "cid3",
+            "required": false,
+            "type": "string",
+            "description": "Customer ID 3 associated with the CPE object"
+          },
+          {
+            "in": "query",
+            "name": "cid4",
+            "required": false,
+            "type": "string",
+            "description": "Customer ID 4 associated with the CPE object"
+          },
+          {
+            "in": "query",
+            "name": "extServiceid",
+            "required": false,
+            "type": "string",
+            "description": "External service ID, provided by the OSS"
+          },
+          {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 1000,
+            "description": "Limit",
+            "in": "query",
+            "name": "limit",
+            "required": false
+          },
+          {
+            "type": "integer",
+            "default": null,
+            "minimum": 0,
+            "description": "Offset",
+            "in": "query",
+            "name": "offset",
+            "required": false
+          },
+          {
+            "type": "string",
+            "default": "serviceid",
+            "enum": [
+              "cpeid",
+              "cid",
+              "cid2",
+              "cid3",
+              "cid4",
+              "extServiceid",
+              "serviceid"
+            ],
+            "description": "Order by field",
+            "in": "query",
+            "name": "order_by",
+            "required": false
+          },
+          {
+            "type": "string",
+            "default": "asc",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "description": "Order direction",
+            "in": "query",
+            "name": "order_dir",
+            "required": false
+          }
+        ]
+      },
       "post": {
         "responses": {
           "201": {
@@ -2566,6 +2856,265 @@
                 "ServiceParameters"
               ]
             }
+          }
+        ]
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "integer"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/PacketCableMTAGettingClass"
+                  }
+                },
+                "count": {
+                  "type": "integer"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "message",
+                "code",
+                "data",
+                "count"
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "integer"
+                },
+                "errors": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "message",
+                "code"
+              ]
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "integer"
+                },
+                "errors": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "message",
+                "code"
+              ]
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "integer"
+                },
+                "errors": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "message",
+                "code"
+              ]
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "integer"
+                },
+                "errors": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "message",
+                "code"
+              ]
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "integer"
+                },
+                "errors": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "message",
+                "code"
+              ]
+            }
+          }
+        },
+        "description": "This method is used for trigger actions on Service",
+        "tags": [
+          "PacketCableMTA"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "cpeid",
+            "required": false,
+            "type": "string",
+            "description": "CPE ID"
+          },
+          {
+            "in": "query",
+            "name": "cid",
+            "required": false,
+            "type": "string",
+            "description": "Customer ID associated with the CPE object"
+          },
+          {
+            "in": "query",
+            "name": "cid2",
+            "required": false,
+            "type": "string",
+            "description": "Customer ID 2 associated with the CPE object"
+          },
+          {
+            "in": "query",
+            "name": "cid3",
+            "required": false,
+            "type": "string",
+            "description": "Customer ID 3 associated with the CPE object"
+          },
+          {
+            "in": "query",
+            "name": "cid4",
+            "required": false,
+            "type": "string",
+            "description": "Customer ID 4 associated with the CPE object"
+          },
+          {
+            "in": "query",
+            "name": "extServiceid",
+            "required": false,
+            "type": "string",
+            "description": "External service ID, provided by the OSS"
+          },
+          {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 1000,
+            "description": "Limit",
+            "in": "query",
+            "name": "limit",
+            "required": false
+          },
+          {
+            "type": "integer",
+            "default": null,
+            "minimum": 0,
+            "description": "Offset",
+            "in": "query",
+            "name": "offset",
+            "required": false
+          },
+          {
+            "type": "string",
+            "default": "serviceid",
+            "enum": [
+              "cpeid",
+              "cid",
+              "cid2",
+              "cid3",
+              "cid4",
+              "extServiceid",
+              "serviceid"
+            ],
+            "description": "Order by field",
+            "in": "query",
+            "name": "order_by",
+            "required": false
+          },
+          {
+            "type": "string",
+            "default": "asc",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "description": "Order direction",
+            "in": "query",
+            "name": "order_dir",
+            "required": false
           }
         ]
       }
@@ -3413,6 +3962,7 @@
               "properties": {
                 "CM_MAC": {
                   "type": "string",
+                  "x-nullable": true,
                   "description": "Old CPEID"
                 },
                 "NEW_CM_MAC": {
