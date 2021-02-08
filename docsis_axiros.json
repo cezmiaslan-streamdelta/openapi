@@ -77,11 +77,6 @@
           "type": "string",
           "x-nullable": true,
           "description": "Customer ID 4 associated with the CPE object"
-        },
-        "extServiceid": {
-          "type": "string",
-          "x-nullable": true,
-          "description": "External service ID, provided by the OSS"
         }
       },
       "required": [
@@ -100,41 +95,19 @@
         "include_classes": {
           "type": "object",
           "x-nullable": true,
-          "description": "Multiple client classes for Cable Modem",
-          "additionalProperties": {}
+          "description": "Multiple client classes for Cable Modem"
         },
         "include_cpe_classes": {
           "type": "object",
           "x-nullable": true,
-          "description": "Multiple client classes for CPE",
-          "additionalProperties": {}
-        },
-        "include_edva_classes": {
-          "type": "object",
-          "x-nullable": true,
-          "description": "Multiple client classes for MTA",
-          "additionalProperties": {}
+          "description": "Multiple client classes for CPE"
         },
         "custom_properties": {
           "type": "object",
           "x-nullable": true,
-          "description": "Set of parameters which used for customer product configuration ",
-          "additionalProperties": {}
-        },
-        "options": {
-          "type": "object",
-          "x-nullable": true,
-          "description": "DHCPv4 Options",
-          "additionalProperties": {}
-        },
-        "options6": {
-          "type": "object",
-          "x-nullable": true,
-          "description": "DHCPv6 Options",
-          "additionalProperties": {}
+          "description": "Set of parameters which used for customer product configuration "
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for DOCSISModem service"
     },
     "DOCSISModemGettingClass": {
@@ -147,7 +120,6 @@
           "$ref": "#/definitions/DOCSISModemClass"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of DOCSISModem service"
     },
     "DOCSISModemServiceIdentifiersModifyClass": {
@@ -194,36 +166,29 @@
         },
         "include_classes": {
           "type": "object",
-          "description": "Multiple client classes for Cable Modem",
-          "additionalProperties": {}
+          "description": "Multiple client classes for Cable Modem"
         },
         "include_cpe_classes": {
           "type": "object",
-          "description": "Multiple client classes for CPE",
-          "additionalProperties": {}
+          "description": "Multiple client classes for CPE"
         },
         "include_edva_classes": {
           "type": "object",
-          "description": "Multiple client classes for MTA",
-          "additionalProperties": {}
+          "description": "Multiple client classes for MTA"
         },
         "custom_properties": {
           "type": "object",
-          "description": "Set of parameters which used for customer product configuration ",
-          "additionalProperties": {}
+          "description": "Set of parameters which used for customer product configuration "
         },
         "options": {
           "type": "object",
-          "description": "DHCPv4 Options",
-          "additionalProperties": {}
+          "description": "DHCPv4 Options"
         },
         "options6": {
           "type": "object",
-          "description": "DHCPv6 Options",
-          "additionalProperties": {}
+          "description": "DHCPv6 Options"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for DOCSISModem service update"
     },
     "DOCSISModemServiceIdentifiersGetListClass": {
@@ -265,36 +230,29 @@
         },
         "include_classes": {
           "type": "object",
-          "description": "Multiple client classes for Cable Modem",
-          "additionalProperties": {}
+          "description": "Multiple client classes for Cable Modem"
         },
         "include_cpe_classes": {
           "type": "object",
-          "description": "Multiple client classes for CPE",
-          "additionalProperties": {}
+          "description": "Multiple client classes for CPE"
         },
         "include_edva_classes": {
           "type": "object",
-          "description": "Multiple client classes for MTA",
-          "additionalProperties": {}
+          "description": "Multiple client classes for MTA"
         },
         "custom_properties": {
           "type": "object",
-          "description": "Set of parameters which used for customer product configuration ",
-          "additionalProperties": {}
+          "description": "Set of parameters which used for customer product configuration "
         },
         "options": {
           "type": "object",
-          "description": "DHCPv4 Options",
-          "additionalProperties": {}
+          "description": "DHCPv4 Options"
         },
         "options6": {
           "type": "object",
-          "description": "DHCPv6 Options",
-          "additionalProperties": {}
+          "description": "DHCPv6 Options"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for DOCSISModem service update"
     },
     "DOCSISModemCommandOptions": {
@@ -364,11 +322,6 @@
           "type": "string",
           "x-nullable": true,
           "description": "Customer ID 4 associated with the CPE object"
-        },
-        "extServiceid": {
-          "type": "string",
-          "x-nullable": true,
-          "description": "External service ID, provided by the OSS"
         }
       },
       "required": [
@@ -387,29 +340,14 @@
         "include_classes": {
           "type": "object",
           "x-nullable": true,
-          "description": "Include classes",
-          "additionalProperties": {}
+          "description": "Include classes"
         },
         "custom_properties": {
           "type": "object",
           "x-nullable": true,
-          "description": "Custom properties",
-          "additionalProperties": {}
-        },
-        "options": {
-          "type": "object",
-          "x-nullable": true,
-          "description": "DHCP v4 Options",
-          "additionalProperties": {}
-        },
-        "options6": {
-          "type": "object",
-          "x-nullable": true,
-          "description": "DHCP v6 Options",
-          "additionalProperties": {}
+          "description": "Custom properties"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for PacketCableMTA service"
     },
     "PacketCableMTAGettingClass": {
@@ -422,7 +360,6 @@
           "$ref": "#/definitions/PacketCableMTAClass"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of PacketCableMTA service"
     },
     "PacketCableMTAServiceIdentifiersModifyClass": {
@@ -464,26 +401,21 @@
         },
         "include_classes": {
           "type": "object",
-          "description": "Include classes",
-          "additionalProperties": {}
+          "description": "Include classes"
         },
         "custom_properties": {
           "type": "object",
-          "description": "Custom properties",
-          "additionalProperties": {}
+          "description": "Custom properties"
         },
         "options": {
           "type": "object",
-          "description": "DHCP v4 Options",
-          "additionalProperties": {}
+          "description": "DHCP v4 Options"
         },
         "options6": {
           "type": "object",
-          "description": "DHCP v6 Options",
-          "additionalProperties": {}
+          "description": "DHCP v6 Options"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for PacketCableMTA service update"
     },
     "PacketCableMTAServiceIdentifiersGetListClass": {
@@ -525,26 +457,21 @@
         },
         "include_classes": {
           "type": "object",
-          "description": "Include classes",
-          "additionalProperties": {}
+          "description": "Include classes"
         },
         "custom_properties": {
           "type": "object",
-          "description": "Custom properties",
-          "additionalProperties": {}
+          "description": "Custom properties"
         },
         "options": {
           "type": "object",
-          "description": "DHCP v4 Options",
-          "additionalProperties": {}
+          "description": "DHCP v4 Options"
         },
         "options6": {
           "type": "object",
-          "description": "DHCP v6 Options",
-          "additionalProperties": {}
+          "description": "DHCP v6 Options"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for PacketCableMTA service update"
     },
     "PacketCableMTACommandOptions": {
@@ -626,21 +553,17 @@
       "properties": {
         "include_classes": {
           "type": "object",
-          "description": "Include classes",
-          "additionalProperties": {}
+          "description": "Include classes"
         },
         "options": {
           "type": "object",
-          "description": "DHCP v4 Options",
-          "additionalProperties": {}
+          "description": "DHCP v4 Options"
         },
         "options6": {
           "type": "object",
-          "description": "DHCP v6 Options",
-          "additionalProperties": {}
+          "description": "DHCP v6 Options"
         }
       },
-      "additionalProperties": false,
       "required": [
         "include_classes"
       ],
@@ -656,7 +579,6 @@
           "$ref": "#/definitions/CPEClass"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of CPE service"
     },
     "CPEServiceIdentifiersModifyClass": {
@@ -694,21 +616,17 @@
       "properties": {
         "include_classes": {
           "type": "object",
-          "description": "Include classes",
-          "additionalProperties": {}
+          "description": "Include classes"
         },
         "options": {
           "type": "object",
-          "description": "DHCP v4 Options",
-          "additionalProperties": {}
+          "description": "DHCP v4 Options"
         },
         "options6": {
           "type": "object",
-          "description": "DHCP v6 Options",
-          "additionalProperties": {}
+          "description": "DHCP v6 Options"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for CPE service update"
     },
     "CPEServiceIdentifiersGetListClass": {
@@ -746,21 +664,17 @@
       "properties": {
         "include_classes": {
           "type": "object",
-          "description": "Include classes",
-          "additionalProperties": {}
+          "description": "Include classes"
         },
         "options": {
           "type": "object",
-          "description": "DHCP v4 Options",
-          "additionalProperties": {}
+          "description": "DHCP v4 Options"
         },
         "options6": {
           "type": "object",
-          "description": "DHCP v6 Options",
-          "additionalProperties": {}
+          "description": "DHCP v6 Options"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for CPE service update"
     },
     "CPECommandOptions": {
@@ -850,16 +764,13 @@
         },
         "custom_properties": {
           "type": "object",
-          "description": "Custom Properties",
-          "additionalProperties": {}
+          "description": "Custom Properties"
         },
         "options": {
           "type": "object",
-          "description": "DHCPv4 Options",
-          "additionalProperties": {}
+          "description": "DHCPv4 Options"
         }
       },
-      "additionalProperties": false,
       "required": [
         "static_ip"
       ],
@@ -875,7 +786,6 @@
           "$ref": "#/definitions/StaticIPv4Class"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of StaticIPv4 service"
     },
     "StaticIPv4ServiceIdentifiersModifyClass": {
@@ -921,16 +831,13 @@
         },
         "custom_properties": {
           "type": "object",
-          "description": "Custom Properties",
-          "additionalProperties": {}
+          "description": "Custom Properties"
         },
         "options": {
           "type": "object",
-          "description": "DHCPv4 Options",
-          "additionalProperties": {}
+          "description": "DHCPv4 Options"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for StaticIPv4 service update"
     },
     "StaticIPv4ServiceIdentifiersGetListClass": {
@@ -976,16 +883,13 @@
         },
         "custom_properties": {
           "type": "object",
-          "description": "Custom Properties",
-          "additionalProperties": {}
+          "description": "Custom Properties"
         },
         "options": {
           "type": "object",
-          "description": "DHCPv4 Options",
-          "additionalProperties": {}
+          "description": "DHCPv4 Options"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for StaticIPv4 service update"
     },
     "StaticIPv4CommandOptions": {
@@ -1083,16 +987,13 @@
         },
         "custom_properties": {
           "type": "object",
-          "description": "Custom Properties",
-          "additionalProperties": {}
+          "description": "Custom Properties"
         },
         "options6": {
           "type": "object",
-          "description": "DHCPv6 Options",
-          "additionalProperties": {}
+          "description": "DHCPv6 Options"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for StaticIPv6 service"
     },
     "StaticIPv6GettingClass": {
@@ -1105,7 +1006,6 @@
           "$ref": "#/definitions/StaticIPv6Class"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of StaticIPv6 service"
     },
     "StaticIPv6ServiceIdentifiersModifyClass": {
@@ -1159,16 +1059,13 @@
         },
         "custom_properties": {
           "type": "object",
-          "description": "Custom Properties",
-          "additionalProperties": {}
+          "description": "Custom Properties"
         },
         "options6": {
           "type": "object",
-          "description": "DHCPv6 Options",
-          "additionalProperties": {}
+          "description": "DHCPv6 Options"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for StaticIPv6 service update"
     },
     "StaticIPv6ServiceIdentifiersGetListClass": {
@@ -1222,16 +1119,13 @@
         },
         "custom_properties": {
           "type": "object",
-          "description": "Custom Properties",
-          "additionalProperties": {}
+          "description": "Custom Properties"
         },
         "options6": {
           "type": "object",
-          "description": "DHCPv6 Options",
-          "additionalProperties": {}
+          "description": "DHCPv6 Options"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for StaticIPv6 service update"
     },
     "StaticIPv6CommandOptions": {
@@ -1361,11 +1255,9 @@
         },
         "custom_properties": {
           "type": "object",
-          "description": "Custom Properties",
-          "additionalProperties": {}
+          "description": "Custom Properties"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for DHCPInfo service"
     },
     "DHCPInfoGettingClass": {
@@ -1378,7 +1270,6 @@
           "$ref": "#/definitions/DHCPInfoClass"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of DHCPInfo service"
     },
     "DHCPInfoServiceIdentifiersGetListClass": {
@@ -1464,11 +1355,9 @@
         },
         "custom_properties": {
           "type": "object",
-          "description": "Custom Properties",
-          "additionalProperties": {}
+          "description": "Custom Properties"
         }
       },
-      "additionalProperties": false,
       "description": "Structure of parameters for DHCPInfo service update"
     },
     "DHCPInfoCommandOptions": {
@@ -1571,8 +1460,7 @@
         },
         "options": {
           "type": "object",
-          "description": "DHCPv4 Options",
-          "additionalProperties": {}
+          "description": "DHCPv4 Options"
         },
         "client_classes": {
           "type": "array",
@@ -1580,7 +1468,6 @@
           "items": {}
         }
       },
-      "additionalProperties": false,
       "required": [
         "filter_rules",
         "classname"
@@ -1638,15 +1525,13 @@
         },
         "options6": {
           "type": "object",
-          "description": "DHCPv6 Options",
-          "additionalProperties": {}
+          "description": "DHCPv6 Options"
         },
         "delegated_len": {
           "type": "integer",
           "description": "delegated_len"
         }
       },
-      "additionalProperties": false,
       "required": [
         "filter_rules",
         "classname"
@@ -1654,7 +1539,6 @@
       "description": "Structure of parameters for DeviceClass6 service"
     },
     "KeyType": {
-      "additionalProperties": false,
       "properties": {
         "key": {
           "description": "Parameter name",
@@ -1676,7 +1560,6 @@
       "type": "object"
     },
     "ServiceIdentifiersClass": {
-      "additionalProperties": false,
       "type": "object",
       "properties": {
         "cpeid": {
@@ -1712,7 +1595,6 @@
       "description": "Structure of identifiers for services"
     },
     "CommandOptionsClass": {
-      "additionalProperties": false,
       "type": "object",
       "properties": {
         "limit": {
@@ -1755,7 +1637,6 @@
       "description": "Structure of command options"
     },
     "PatchResponseClass": {
-      "additionalProperties": false,
       "type": "object",
       "properties": {
         "message": {
@@ -1769,7 +1650,6 @@
       }
     },
     "GetDocsisResponseClass": {
-      "additionalProperties": false,
       "type": "object",
       "properties": {
         "message": {
@@ -1793,7 +1673,6 @@
       }
     },
     "GetPacketResponseClass": {
-      "additionalProperties": false,
       "type": "object",
       "properties": {
         "message": {
@@ -1845,7 +1724,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -1874,7 +1752,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -1899,7 +1776,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -1924,7 +1800,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -1949,7 +1824,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2080,7 +1954,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2109,7 +1982,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2134,7 +2006,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2159,7 +2030,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2184,7 +2054,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2212,7 +2081,6 @@
                   "$ref": "#/definitions/DOCSISModemClass"
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "ServiceIdentifiers",
                 "ServiceParameters"
@@ -2249,7 +2117,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2278,7 +2145,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2303,7 +2169,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2328,7 +2193,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2353,7 +2217,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2402,7 +2265,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2431,7 +2293,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2456,7 +2317,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2481,7 +2341,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2506,7 +2365,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2541,8 +2399,7 @@
                 "ServiceParameters": {
                   "$ref": "#/definitions/DOCSISModemModifyClass"
                 }
-              },
-              "additionalProperties": false
+              }
             }
           }
         ]
@@ -2594,7 +2451,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2623,7 +2479,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2648,7 +2503,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2673,7 +2527,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2698,7 +2551,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2742,7 +2594,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2771,7 +2622,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2796,7 +2646,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2821,7 +2670,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2846,7 +2694,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2874,7 +2721,6 @@
                   "$ref": "#/definitions/PacketCableMTAClass"
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "ServiceIdentifiers",
                 "ServiceParameters"
@@ -2909,7 +2755,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2938,7 +2783,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2963,7 +2807,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -2988,7 +2831,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3013,7 +2855,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3146,7 +2987,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3175,7 +3015,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3200,7 +3039,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3225,7 +3063,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3250,7 +3087,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3299,7 +3135,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3328,7 +3163,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3353,7 +3187,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3378,7 +3211,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3403,7 +3235,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3438,8 +3269,7 @@
                 "ServiceParameters": {
                   "$ref": "#/definitions/PacketCableMTAModifyClass"
                 }
-              },
-              "additionalProperties": false
+              }
             }
           }
         ]
@@ -3491,7 +3321,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3520,7 +3349,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3545,7 +3373,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3570,7 +3397,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3595,7 +3421,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3632,7 +3457,6 @@
                   "description": "New CPEID"
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "CM_MAC",
                 "NEW_CM_MAC"
@@ -3665,7 +3489,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3694,7 +3517,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3719,7 +3541,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3744,7 +3565,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3769,7 +3589,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3799,7 +3618,6 @@
                   "description": "MAC Address of Cable Modem"
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "CM_MAC"
               ]
@@ -3831,7 +3649,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3860,7 +3677,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3885,7 +3701,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3910,7 +3725,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3935,7 +3749,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -3970,7 +3783,6 @@
                   "description": "New CPEID"
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "CM_MAC",
                 "NEW_CM_MAC"
@@ -4003,7 +3815,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -4032,7 +3843,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -4057,7 +3867,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -4082,7 +3891,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
@@ -4107,7 +3915,6 @@
                   }
                 }
               },
-              "additionalProperties": false,
               "required": [
                 "message",
                 "code"
