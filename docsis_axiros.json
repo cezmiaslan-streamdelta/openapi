@@ -1767,6 +1767,54 @@
           "example": 0
         }
       }
+    },
+    "GetDocsisResponseClass": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "You did it"
+        },
+        "code": {
+          "type": "integer",
+          "example": 0
+        },
+        "count": {
+          "type": "integer",
+          "example": 1
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DOCSISModemGettingClass"
+          }
+        }
+      }
+    },
+    "GetPacketResponseClass": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "You did it"
+        },
+        "code": {
+          "type": "integer",
+          "example": 0
+        },
+        "count": {
+          "type": "integer",
+          "example": 1
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PacketCableMTAGettingClass"
+          }
+        }
+      }
     }
   },
   "paths": {
@@ -1776,31 +1824,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "string"
-                },
-                "code": {
-                  "type": "integer"
-                },
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/DOCSISModemGettingClass"
-                  }
-                },
-                "count": {
-                  "type": "integer"
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "message",
-                "code",
-                "data",
-                "count"
-              ]
+              "$ref": "#/definitions/GetDocsisResponseClass"
             }
           },
           "400": {
@@ -2864,31 +2888,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "type": "object",
-              "properties": {
-                "message": {
-                  "type": "string"
-                },
-                "code": {
-                  "type": "integer"
-                },
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/PacketCableMTAGettingClass"
-                  }
-                },
-                "count": {
-                  "type": "integer"
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "message",
-                "code",
-                "data",
-                "count"
-              ]
+              "$ref": "#/definitions/GetPacketResponseClass"
             }
           },
           "400": {
